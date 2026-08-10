@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Contabilidade Residencial</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Contabilidade Residencial</h1>
+        <h2>Criar Conta do Familiar</h2>
+    </header>
+
+    <main>
+        <!-- Envia os dados para o seu PHP usando o caminho relativo correto -->
+        <form action="cadastro.php" method="get">
+            
+            <!-- Identificador para o PHP tratar o cadastro -->
+            <input type="hidden" name="acao" value="cadastrar_usuario">
+
+            <fieldset>
+                <legend>Dados Pessoais</legend>
+
+                <!-- Nome Completo -->
+                <div>
+                    <label for="nome">Nome Completo:</label><br>
+                    <input type="text" id="nome" name="nome" placeholder="Ex: Maria Silva" required>
+                </div>
+                <br>
+
+                <!-- Telefone -->
+                <div>
+                    <label for="telefone">Telefone / WhatsApp:</label><br>
+                    <input type="tel" id="telefone" name="telefone" placeholder="(00) 90000-0000" required>
+                </div>
+                <br>
+
+                <!-- Hierarquia na Família -->
+                <div>
+                    <label for="hierarquia">Hierarquia na Família:</label><br>
+                    <select id="hierarquia" name="hierarquia" required>
+                        <option value="" disabled selected>Selecione o papel...</option>
+                        <option value="pai_mae">Pai / Mãe</option>
+                        <option value="filho_filha">Filho / Filha</option>
+                        <option value="conjuge">Cônjuge</option>
+                        <option value="outro">Outro Familiar</option>
+                    </select>
+                </div>
+                <br>
+
+                <!-- Renda Mensal -->
+                <div>
+                    <label for="renda">Renda Mensal (R$):</label><br>
+                    <input type="number" id="renda" name="renda" step="0.01" min="0" placeholder="0,00" required>
+                </div>
+            </fieldset>
+
+            <br>
+
+            <fieldset>
+                <legend>Dados de Acesso ao Sistema</legend>
+
+                <!-- E-mail -->
+                <div>
+                    <label for="email">E-mail de Acesso:</label><br>
+                    <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required>
+                </div>
+                <br>
+
+                <!-- Senha -->
+                <div>
+                    <label for="senha">Crie uma Senha:</label><br>
+                    <input type="password" id="senha" name="senha" minlength="6" placeholder="Mínimo 6 caracteres" required>
+                </div>
+                <br>
+
+                <!-- Confirmação de Senha -->
+                <div>
+                    <label for="confirma_senha">Confirme a Senha:</label><br>
+                    <input type="password" id="confirma_senha" name="confirma_senha" required>
+                </div>
+            </fieldset>
+
+            <br>
+
+            <button type="submit">Concluir Cadastro</button>
+        </form>
+
+        <hr>
+
+        <!-- Link para a tela de Login -->
+        <p>Já possui uma conta criada?</p>
+        <a href="index.html">Fazer Login</a>
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Contabilidade Residencial</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Contabilidade Residencial</h1>
+        <h2>Acessar o Sistema</h2>
+    </header>
+
+    <main>
+        <!-- Envia os dados de login para o PHP -->
+        <form action="cadastro.php" method="get">
+            
+            <!-- Identificador para o PHP tratar a autenticação -->
+            <input type="hidden" name="acao" value="login_usuario">
+
+            <div>
+                <label for="login_email">E-mail:</label><br>
+                <input type="email" id="login_email" name="email" placeholder="seuemail@exemplo.com" required>
+            </div>
+            <br>
+
+            <div>
+                <label for="login_senha">Senha:</label><br>
+                <input type="password" id="login_senha" name="senha" placeholder="Digite sua senha" required>
+            </div>
+            <br>
+
+            <button type="submit">Entrar</button>
+        </form>
+
+        <hr>
+
+        <!-- Link para a tela de Cadastro -->
+        <p>Ainda não tem um cadastro familiar?</p>
+        <a href="cadastro.html">Cadastrar Novo Familiar</a>
+    </main>
+
+</body>
+</html>
