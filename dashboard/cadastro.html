@@ -15,7 +15,7 @@
 
     <main>
         <!-- Envia os dados para o seu PHP usando o caminho relativo correto -->
-        <form action="cadastro.php" method="get">
+        <form action="cadastro.php" method="post">
             
             <!-- Identificador para o PHP tratar o cadastro -->
             <input type="hidden" name="acao" value="cadastrar_usuario">
@@ -34,19 +34,6 @@
                 <div>
                     <label for="telefone">Telefone / WhatsApp:</label><br>
                     <input type="tel" id="telefone" name="telefone" placeholder="(00) 90000-0000" required>
-                </div>
-                <br>
-
-                <!-- Hierarquia na Família -->
-                <div>
-                    <label for="hierarquia">Hierarquia na Família:</label><br>
-                    <select id="hierarquia" name="hierarquia" required>
-                        <option value="" disabled selected>Selecione o papel...</option>
-                        <option value="pai_mae">Pai / Mãe</option>
-                        <option value="filho_filha">Filho / Filha</option>
-                        <option value="conjuge">Cônjuge</option>
-                        <option value="outro">Outro Familiar</option>
-                    </select>
                 </div>
                 <br>
 
