@@ -3,46 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contabilidade Residencial</title>
+    <title>Login - Contabilidade Residencial</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
         <h1>Contabilidade Residencial</h1>
+        <h2>Acessar o Sistema</h2>
     </header>
 
     <main>
-        <form>
-            <!-- 1. Pergunta: Quem fará o lançamento? -->
-            <div class="form-group">
-                <label for="responsavel">Quem fará o lançamento?</label>
-                <select id="responsavel" name="responsavel" required>
-                    <option value="" disabled selected>Selecione o responsável</option>
-                    <option value="morador_1">Morador 1</option>
-                    <option value="morador_2">Morador 2</option>
-                    <option value="outro">Outro</option>
-                </select>
-            </div>
+        <!-- Envia os dados de login para o PHP -->
+        <form action="cadastro.php" method="get">
+            
+            <!-- Identificador para o PHP tratar a autenticação -->
+            <input type="hidden" name="acao" value="login_usuario">
 
-            <!-- 2. Pergunta: Qual valor será lançado? -->
-            <div class="form-group">
-                <label for="valor">Qual valor será lançado?</label>
-                <input type="number" id="valor" name="valor" step="0.01" min="0" placeholder="R$ 0,00" required>
+            <div>
+                <label for="login_email">E-mail:</label><br>
+                <input type="email" id="login_email" name="email" placeholder="seuemail@exemplo.com" required>
             </div>
+            <br>
 
-            <!-- 3. Pergunta: É uma despesa ou uma entrada? -->
-            <div class="form-group">
-                <label for="tipo_transacao">É uma despesa ou uma entrada?</label>
-                <select id="tipo_transacao" name="tipo_transacao" required>
-                    <option value="" disabled selected>Selecione o tipo</option>
-                    <option value="entrada">Entrada</option>
-                    <option value="despesa">Despesa</option>
-                </select>
+            <div>
+                <label for="login_senha">Senha:</label><br>
+                <input type="password" id="login_senha" name="senha" placeholder="Digite sua senha" required>
             </div>
+            <br>
 
-            <button type="submit">Salvar Lançamento</button>
+            <button type="submit">Entrar</button>
         </form>
+
+        <hr>
+
+        <!-- Link para a tela de Cadastro -->
+        <p>Ainda não tem um cadastro familiar?</p>
+        <a href="cadastro.html">Cadastrar Novo Familiar</a>
     </main>
 
 </body>
