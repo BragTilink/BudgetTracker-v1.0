@@ -13,7 +13,7 @@
     $conexao->query($sql);
 
     if ($conexao->query($sql)) {
-    header("Location: home.html");
+    header("Location: home.php");
     exit;
     }
     
