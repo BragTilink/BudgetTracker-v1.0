@@ -1,0 +1,7 @@
+# Ignore specific database files
+budget.tracker.sql
+
+# Ignore other potential SQL dumps or SQLite DBs
+*.sql.gz
+*.sqlite
+*.db
