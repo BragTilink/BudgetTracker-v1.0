@@ -1,3 +1,7 @@
+<?php
+    require_once "../php_contabil/accounting.php";
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -12,10 +16,9 @@
     <header class="top-bar">
         <h1>Budget Tracker v1.0</h1>
         <div class="user-info">
-            Usuário: <span class="user-name">Usuário Logado</span>
+            Usuário: <span class="user-name"><?= $_SESSION['nome'] ?></span>
         </div>
     </header>
-
     <div class="container">
 
         <!-- Grid com os Indicadores Financeiros -->
@@ -24,13 +27,13 @@
             <!-- Painel: Saldo Atual -->
             <div class="card">
                 <h2>Saldo Atual</h2>
-                <div class="valor saldo">R$ 0,00</div>
+                <div class="valor saldo">R$ <?= number_format($saldo, 2, ',', '.') ?></div>
             </div>
 
             <!-- Painel: Gasto até o momento -->
             <div class="card">
                 <h2>Gastos até o Momento</h2>
-                <div class="valor gastos">R$ 0,00</div>
+                <div class="valor gastos">R$ <?= number_format($despesas, 2, ',', '.') ?></div>
             </div>
 
         </section>
@@ -38,7 +41,7 @@
         <!-- Seção com o Atalho para o Formulário de Lançamento -->
         <section class="card">
             <h2>Ações Rápidas</h2>
-            <a href="home.html" class="btn-link">Fazer novo lançamento</a>
+            <a href="home.php" class="btn-link">Fazer novo lançamento</a>
         </section>
 
     </div>

@@ -10,10 +10,9 @@
     $sql = "INSERT INTO cadastro (nome, email, senha, salario, telefone)
         VALUES ('$nome', '$email', '$senha', '$salario', '$telefone')";
 
-    $conexao->query($sql);
 
     if ($conexao->query($sql)) {
-    header("Location: home.php");
+    header("Location: dashboard.html");
     exit;
     }
     
