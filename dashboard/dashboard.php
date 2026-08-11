@@ -1,5 +1,8 @@
 <?php
     require_once "../php_contabil/accounting.php";
+
+    /** @var float $saldo */
+/** @var float $despesas */
 ?>
 
 <!DOCTYPE html>
