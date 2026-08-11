@@ -30,7 +30,7 @@ CREATE TABLE `cadastro` (
   `salario` decimal(10,2) DEFAULT NULL,
   `telefone` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,8 +39,33 @@ CREATE TABLE `cadastro` (
 
 LOCK TABLES `cadastro` WRITE;
 /*!40000 ALTER TABLE `cadastro` DISABLE KEYS */;
-INSERT INTO `cadastro` VALUES (1,'Thiago Palú Trömel','thiago.palu17@gmail.com','123456',5000.00,2147483647),(2,'','','',0.00,0),(3,'','','',0.00,0),(4,'','','',0.00,0),(5,'','','',0.00,0),(6,'','','',0.00,0),(7,'','','',0.00,0);
 /*!40000 ALTER TABLE `cadastro` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `lancamentos`
+--
+
+DROP TABLE IF EXISTS `lancamentos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `lancamentos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `responsavel_id` int(11) NOT NULL,
+  `valor` decimal(10,2) NOT NULL,
+  `tipo` varchar(20) NOT NULL,
+  `data_lancamento` datetime DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `lancamentos`
+--
+
+LOCK TABLES `lancamentos` WRITE;
+/*!40000 ALTER TABLE `lancamentos` DISABLE KEYS */;
+/*!40000 ALTER TABLE `lancamentos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -52,4 +77,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-08-10 21:05:53
+-- Dump completed on 2026-08-11 15:15:41
