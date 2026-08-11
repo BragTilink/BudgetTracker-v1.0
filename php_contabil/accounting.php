@@ -1,52 +1,68 @@
 <?php
-    require_once "../database/database.php";
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+require_once "../database/database.php";
 
 
-    // 1. Usuário logado
-    $usuario_id = $_SESSION['usuario_id'];
+// Usuário logado
+$usuario_id = $_SESSION['usuario_id'];
 
 
-    // 2. Buscar salário
-    $sql = "SELECT salario FROM cadastro WHERE id = ?";
+// Buscar o salário do usuário
+$sql = "SELECT salario FROM cadastro WHERE id = ?";
 
-    $stmt = $conexao->prepare($sql);
-    $stmt->bind_param("i", $usuario_id);
-    $stmt->execute();
+$stmt = $conexao->prepare($sql);
+$stmt->bind_param("i", $usuario_id);
+$stmt->execute();
 
-    $resultado = $stmt->get_result();
+$resultado = $stmt->get_result();
 
-    $usuario = $resultado->fetch_assoc();
+$usuario = $resultado->fetch_assoc();
 
-    $salario = $usuario['salario'];
-
-
-    // 3. Buscar lançamentos
-    $sql = "SELECT * FROM lancamentos WHERE responsavel_id = ?";
-
-    $stmt = $conexao->prepare($sql);
-    $stmt->bind_param("i", $usuario_id);
-    $stmt->execute();
-
-    $resultado = $stmt->get_result();
+$salario = $usuario['salario'];
 
 
-    // 4. Separar entradas e despesas
-    $entrada = 0;
-    $despesas = 0;
+// Buscar os lançamentos do usuário
+$sql = "SELECT * FROM lancamentos WHERE responsavel_id = ?";
 
-    while ($lancamento = $resultado->fetch_assoc()) {
+$stmt = $conexao->prepare($sql);
+$stmt->bind_param("i", $usuario_id);
+$stmt->execute();
 
-        if ($lancamento['tipo'] == 'entrada') {
-            $entrada += $lancamento['valor'];
-        }
+$resultado = $stmt->get_result();
 
-        if ($lancamento['tipo'] == 'despesa') {
-            $despesas += $lancamento['valor'];
-        }
+
+// Inicializar valores
+$entrada = 0;
+$despesas = 0;
+
+$lancamentos = [];
+
+
+// Percorrer os lançamentos
+while ($lancamento = $resultado->fetch_assoc()) {
+
+    // Guarda o lançamento para o histórico do dashboard
+    $lancamentos[] = $lancamento;
+
+
+    // Soma as entradas
+    if ($lancamento['tipo'] == 'entrada') {
+        $entrada += $lancamento['valor'];
     }
 
 
-    // 5. Calcular saldo
-    $saldo = $salario + $entrada - $despesas;
+    // Soma as despesas
+    if ($lancamento['tipo'] == 'despesa') {
+        $despesas += $lancamento['valor'];
+    }
+}
+
+
+// Calcular saldo
+$saldo = $salario + $entrada - $despesas;
 
 ?>
