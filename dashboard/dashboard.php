@@ -1,8 +1,10 @@
 <?php
+    session_start();
+
     require_once "../php_contabil/accounting.php";
 
     /** @var float $saldo */
-/** @var float $despesas */
+    /** @var float $despesas */
 ?>
 
 <!DOCTYPE html>
