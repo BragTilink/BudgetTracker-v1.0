@@ -13,17 +13,37 @@
     </header>
 
     <main>
-        <form action="../php contabil/accounting.php" method="get">
+
+        <?php
+
+            require_once "../database/database.php";
+
+            $resultado = $conexao->query("SELECT id, nome FROM cadastro");
+        ?>
+
+        <form action="lancamento.php" method="post">
             <!-- 1. Pergunta: Quem fará o lançamento? -->
             <div class="form-group">
                 <label for="responsavel">Quem fará o lançamento?</label>
                 <select id="responsavel" name="responsavel" required>
                     <option value="" disabled selected>Selecione o responsável</option>
+
+                    <?php while ($usuario = $resultado->fetch_assoc()): ?>
+
+                    <option value="<?= $usuario['id'] ?>">
+                    <?= $usuario['nome'] ?>
+                    </option>
+
+                    <?php endwhile; ?>
+
+                </select>
+               <!-- <select id="responsavel" name="responsavel" required>
+                    <option value="" disabled selected>Selecione o responsável</option>
                     <option value="morador_1">Marcos</option>
                     <option value="morador_2">Luana</option>
                     <option value="morador_3">Nikoly</option>
                 </select>
-            </div>
+            </div> -->
 
             <!-- 2. Pergunta: Qual valor será lançado? -->
             <div class="form-group">

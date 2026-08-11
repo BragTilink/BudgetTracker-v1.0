@@ -1,8 +1,19 @@
 <?php 
-    session_start();
+    require_once "../database/database.php";
 
-    $_SESSION['nome'];
-    $_SESSION['telefone'];
-    $_SESSION['renda'];
+    $nome = $_POST['nome'];
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
+    $salario = $_POST['renda'];
+    $telefone = $_POST['telefone'];
+
+    $sql = "INSERT INTO cadastro (nome, email, senha, salario, telefone)
+        VALUES ('$nome', '$email', '$senha', '$salario', '$telefone')";
+
+
+    if ($conexao->query($sql)) {
+    header("Location: dashboard.html");
+    exit;
+    }
     
 ?>

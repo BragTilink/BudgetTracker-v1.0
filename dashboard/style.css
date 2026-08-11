@@ -1,96 +1,265 @@
-/* Estilos Globais */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+/* ==========================================================================
+   1. RESET E VARIÁVEIS GLOBAIS
+   ========================================================================== */
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --success-color: #2ecc71;
+    --danger-color: #e74c3c;
+    --background-color: #f4f6f9;
+    --card-background: #ffffff;
+    --text-color: #333333;
+    --border-color: #cccccc;
+    --radius: 8px;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
-        body {
-            background-color: #f4f6f9;
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            padding: 20px;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-        /* Cabeçalho */
-        header {
-            margin-bottom: 25px;
-            text-align: center;
-        }
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
 
-        header h1 {
-            color: #2c3e50;
-            font-size: 1.8rem;
-        }
+/* ==========================================================================
+   2. CABEÇALHOS (HEADER E TOP-BAR)
+   ========================================================================== */
+header, .top-bar {
+    width: 100%;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
 
-        /* Caixa Principal (Main) */
-        main {
-            background: #ffffff;
-            width: 100%;
-            max-width: 420px;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
-        }
+header h1, .top-bar h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
 
-        /* Estrutura do Formutário */
-        .form-group {
-            margin-bottom: 20px;
-        }
+header h2 {
+    font-size: 1.1rem;
+    font-weight: 400;
+    opacity: 0.85;
+}
 
-        label {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: #4a5568;
-            font-size: 0.95rem;
-        }
+.top-bar {
+    flex-direction: row;
+    justify-content: space-between;
+}
 
-        select, input[type="number"] {
-            width: 100%;
-            padding: 12px 14px;
-            border: 1.5px solid #cbd5e0;
-            border-radius: 8px;
-            font-size: 1rem;
-            color: #2d3748;
-            background-color: #f8fafc;
-            transition: all 0.2s ease-in-out;
-            outline: none;
-        }
+.user-info {
+    font-size: 1rem;
+}
 
-        select:focus, input[type="number"]:focus {
-            border-color: #3182ce;
-            background-color: #ffffff;
-            box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.15);
-        }
+.user-name {
+    font-weight: bold;
+    color: var(--secondary-color);
+}
 
-        /* Botão de Envio */
-        button {
-            width: 100%;
-            padding: 14px;
-            background-color: #3182ce;
-            color: #ffffff;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.2s ease-in-out;
-            margin-top: 10px;
-        }
+/* ==========================================================================
+   3. LAYOUT PRINCIPAL E CONTAINERS
+   ========================================================================== */
+main, .container {
+    width: 100%;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
 
-        button:hover {
-            background-color: #2b6cb0;
-        }
+/* Estrutura para telas centrais de formulário (Login, Cadastro, Lançamento) */
+main {
+    background-color: var(--card-background);
+    padding: 2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
 
-        /* Responsividade para telas menores */
-        @media (max-width: 480px) {
-            main {
-                padding: 20px;
-            }
-        }
+/* ==========================================================================
+   4. FORMULÁRIOS E CAMPOS DE ENTRADA
+   ========================================================================== */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+fieldset {
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+legend {
+    padding: 0 0.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.form-group, form > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+label {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    font-size: 1rem;
+    transition: border-color 0.2s ease;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+/* ==========================================================================
+   5. BOTÕES E LINKS
+   ========================================================================== */
+button[type="submit"], .btn-link {
+    display: inline-block;
+    width: 100%;
+    background-color: var(--secondary-color);
+    color: #ffffff;
+    border: none;
+    padding: 0.85rem;
+    border-radius: var(--radius);
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+button[type="submit"]:hover, .btn-link:hover {
+    background-color: #2980b9;
+}
+
+a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: var(--border-color);
+    margin: 1.5rem 0;
+}
+
+p {
+    margin-bottom: 0.5rem;
+}
+
+/* ==========================================================================
+   6. DASHBOARD (CARDS, TABELAS E INDICADORES)
+   ========================================================================== */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.card {
+    background-color: var(--card-background);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 1.5rem;
+}
+
+.card h2 {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.valor {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.valor.saldo {
+    color: var(--success-color);
+}
+
+.valor.gastos {
+    color: var(--danger-color);
+}
+
+/* Tabela de Histórico */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0.5rem;
+}
+
+th, td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+th {
+    background-color: #f8f9fa;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* ==========================================================================
+   7. RESPONSIVIDADE
+   ========================================================================== */
+@media (max-width: 600px) {
+    .top-bar {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+    
+    main, .container {
+        margin: 1rem auto;
+        padding: 1rem;
+    }
+}
